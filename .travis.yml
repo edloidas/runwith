@@ -5,6 +5,6 @@ env: TRAVIS_CI=true
 
 node_js:
   - "7"
-
-script:
-  - npm run report
+#
+# script:
+#   - npm run test
