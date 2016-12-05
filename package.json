@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Dynamically requires module and calls it with a given arguments",
   "main": "index.js",
-  "bin": "bin/cli.js",
+  "bin": "bin/runwith",
   "keywords": [
     "module",
     "run",
@@ -16,7 +16,8 @@
   "license": "MIT",
   "author": "Mikita Taukachou <edloidas@gmail.com> (https://edloidas.com)",
   "files": [
-    "index.js"
+    "index.js",
+    "bin"
   ],
   "repository": {
     "type": "git",
