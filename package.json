@@ -1,0 +1,48 @@
+{
+  "name": "runwith",
+  "version": "0.0.1",
+  "description": "Dynamically requires module and calls it with a given arguments",
+  "main": "index.js",
+  "bin": "bin/cli.js",
+  "keywords": [
+    "module",
+    "run",
+    "arguments"
+  ],
+  "homepage": "https://github.com/edloidas/runwith#readme",
+  "bugs": {
+    "url": "https://github.com/edloidas/runwith/issues"
+  },
+  "license": "MIT",
+  "author": "Mikita Taukachou <edloidas@gmail.com> (https://edloidas.com)",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edloidas/runwith.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "cover": "jest --coverage",
+    "report": "node_modules/.bin/jest --coverage && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "prepush": "npm test",
+    "fix": "eslint --fix . || exit 0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.14",
+    "eslint": "^3.7.0",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.0.0",
+    "husky": "^0.11.8",
+    "istanbul": "^0.4.5",
+    "jest": "^17.0.3"
+  },
+  "engines": {
+    "node": ">= 6.5.0",
+    "npm": ">= 3.10.7"
+  }
+}
