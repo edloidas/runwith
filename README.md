@@ -11,20 +11,42 @@ runwith
 ## Install ##
 
 ```
-npm install --save runwith
+npm install --save-dev runwith
 ```
 
 ## Usage ##
 
-**From terminal:**
+Use `runwith` in development as part of the `npm` scripts of from a command line.
+Another usage is not recommended.
 
 ```
-npm run runwith [module-path] [arguments...]
+λ runwith --help
+Usage:
+  runwith [options] [<module>] [arguments]
+
+Options:
+  --help  # Print the module options and usage
+
+Arguments:
+  module  # Module name
+          Alphanumeric names are treated as modules from `node_modules`
+          Names with dots and slashes are treated as relative paths
+  name    # Space separated list of arguments that will be passed module
 ```
 
-## Example ##
+**Global**
 
-Let's imagine the following structure of the project:
+If `runwith` is installed globally, you can run it from your terminal in the following way:
+
+```
+runwith ./scripts/clean.js true
+```
+
+**Local**
+
+When `runwith` is installed locally, you can use it in your `npm` scripts.
+
+Let's imagine you have the following structure of the project:
 
 ```
 +-- foo/

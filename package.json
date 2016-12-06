@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Dynamically requires module and calls it with a given arguments",
   "main": "index.js",
-  "bin": "bin/runwith",
+  "bin": "bin/runwith.js",
   "keywords": [
     "module",
     "run",

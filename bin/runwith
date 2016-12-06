@@ -1,9 +1,0 @@
-#!/usr/bin/env node
-
-'use strict';
-
-process.title = 'runwith';
-
-var runwith = require( '../index' );
-
-runwith();

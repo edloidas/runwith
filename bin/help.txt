@@ -1,0 +1,11 @@
+Usage:
+  runwith [options] [<module>] [arguments]
+
+Options:
+  --help  # Print the module options and usage
+
+Arguments:
+  module  # Module name
+          Alphanumeric names are treated as modules from `node_modules`
+          Names with dots and slashes are treated as relative paths
+  name    # Space separated list of arguments that will be passed module
