@@ -1,19 +1,36 @@
 const execFileSync = require( 'child_process' ).execFileSync;
 
-it( 'should not find global module "unknown-module"', () => {
-  const result = execFileSync( 'node', [ './test/runwith.js', 'unknown-module', '1', '2' ]);
-  const msg = result.toString( 'utf8' ).trim();
-  expect( msg.includes( "Cannot find module 'unknown-module'" )).toEqual( true );
+function runAndRead( args ) {
+  const wrapperPath = './test/util/runwith.js';
+  const nodeArgs = args.slice( 0 );
+  nodeArgs.unshift( wrapperPath );
+
+  const result = execFileSync( 'node', nodeArgs );
+  return result.toString( 'utf8' ).trim();
+}
+
+describe( 'Unknown module', () => {
+  it( 'is not found (global)', () => {
+    const msg = runAndRead([ 'unknown-module', '1', '2' ]);
+    expect( msg ).toMatch( /Cannot find module 'unknown-module'/ );
+  });
+
+  it( 'is not found (local)', () => {
+    const msg = runAndRead([ './test/util/unknown-module', '1', '2' ]);
+    expect( msg ).toMatch( /Cannot find module/ );
+  });
 });
 
-it( 'should not find local module "unknown-module"', () => {
-  const result = execFileSync( 'node', [ './test/runwith.js', './test/unknown-module', '1', '2' ]);
-  const msg = result.toString( 'utf8' ).trim();
-  expect( msg.includes( 'Cannot find module' )).toEqual( true );
+describe( 'Global module', () => {
+  it( 'is found', () => {
+    const msg = runAndRead([ 'jest' ]);
+    expect( msg ).not.toMatch( /Cannot find module/ );
+  });
 });
 
-it( 'should run local module "local-module"', () => {
-  const result = execFileSync( 'node', [ './test/runwith.js', './test/local-module', '1', '2' ]);
-  const msg = result.toString( 'utf8' ).trim();
-  expect( msg ).toEqual( '3' );
+describe( 'Local module', () => {
+  it( 'is found', () => {
+    const msg = runAndRead([ './test/util/local-module', '1', '2' ]);
+    expect( msg ).toEqual( '3' );
+  });
 });

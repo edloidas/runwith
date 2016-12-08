@@ -2,7 +2,7 @@
 
 // console output is used to test excecution result message
 try {
-  const msg = require( '../index' )();
+  const msg = require( '../../index' )();
   console.log( msg );
 } catch ( err ) {
   console.log( err.message );
