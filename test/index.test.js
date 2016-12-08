@@ -33,4 +33,14 @@ describe( 'Local module', () => {
     const msg = runAndRead([ './test/util/local-module', '1', '2' ]);
     expect( msg ).toEqual( '3' );
   });
+
+  it( 'can access nested functions', () => {
+    const msg = runAndRead([ './test/util/complex-local-module', '--prop=foo', '3' ]);
+    expect( msg ).toEqual( '3' );
+  });
+
+  it( 'can access deeply nested functions', () => {
+    const msg = runAndRead([ './test/util/complex-local-module', '--prop=bar.baz', '3', '4' ]);
+    expect( msg ).toEqual( '12' );
+  });
 });

@@ -31,6 +31,7 @@
     "fix": "eslint --fix . || exit 0"
   },
   "dependencies": {
+    "lodash.get": "^4.4.2",
     "minimist": "^1.2.0"
   },
   "devDependencies": {

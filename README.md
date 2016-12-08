@@ -27,6 +27,8 @@ Usage:
 Options:
   --help  # Print the module options and usage
 
+  --prop  # Path to module's object property to be called
+
 Arguments:
   module  # Module name
           Alphanumeric names are treated as modules from `node_modules`
@@ -50,7 +52,8 @@ Let's imagine you have the following structure of the project:
 
 ```
 +-- foo/
-| `-- bar.js
+| |-- bar.js
+| `-- baz.js
 +-- index.js
 `-- package.json
 ```
@@ -63,6 +66,16 @@ module.exports = function callable(a, b) {
 }
 ```
 
+**baz.js**
+
+```js
+module.exports = {
+  quux: {
+    quuux: function quuux( a ) { /* ... */ }
+  }
+}
+```
+
 **package.json**
 
 ```json
@@ -70,7 +83,8 @@ module.exports = function callable(a, b) {
   "name": "awesome-module",
   "version": "0.0.1",
   "scripts": {
-    "bar": "runwith ./foo/bar someText 0"
+    "bar": "runwith ./foo/bar someText 0",
+    "baz": "runwith --prop=quux.quuux ./foo/bar 1",
   }
 }
 ```
@@ -81,6 +95,7 @@ Afterwards, just run the `bar` script from terminal:
 > npm run bar
 ```
 
+**Note:** To access the nested property in the module's object, [`lodash.get`](https://lodash.com/docs/#get) is used.
 
 ## License ##
 

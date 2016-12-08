@@ -7,7 +7,15 @@ Other argumets are the parameters, that will be passed
 */
 var argv = require( 'minimist' )( process.argv.slice( 2 ));
 var path = require( 'path' );
+var get = require( 'lodash.get' );
 
+// Access a custom property in the object
+function access( object, propPath ) {
+  if ( propPath ) {
+    return get( object, argv.prop );
+  }
+  return object;
+}
 
 module.exports = function runwith() {
   if ( argv._.length > 0 ) {
@@ -20,7 +28,10 @@ module.exports = function runwith() {
       module = path.resolve( module );
     }
 
-    return require( module ).apply( null, args );
+    // `prop` is custom path to the called function
+    var callable = access( require( module ), argv.prop );
+
+    return callable.apply( null, args );
   }
   return null;
 };

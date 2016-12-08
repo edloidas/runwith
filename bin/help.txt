@@ -4,6 +4,8 @@ Usage:
 Options:
   --help  # Print the module options and usage
 
+  --prop  # Path to module's object property to be called
+
 Arguments:
   module  # Module name
           Alphanumeric names are treated as modules from `node_modules`
